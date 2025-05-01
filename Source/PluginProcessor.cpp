@@ -182,8 +182,8 @@ void DeeelayAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, [[ma
         // This is just pointer arithmetic + dereferencing in disguise:
         // channelDataL[sampleIndex]  ==  *(channelDataL + sampleIndex)
         // test
-        channelDataL[sampleIndex] = (dryL + wetL) * gain;
-        channelDataR[sampleIndex] = (dryR + wetR) * gain;
+        channelDataL[sampleIndex] = (wetL) * gain;
+        channelDataR[sampleIndex] = (wetR) * gain;
         
     }
 }
