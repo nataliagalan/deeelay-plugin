@@ -76,11 +76,12 @@ void Parameters::update() noexcept
     // since gainParam is a pointer, we must use -> to call the parameter object's get() function.
     gainSmoother.setTargetValue(juce::Decibels::decibelsToGain(gainParam->get()));
     
-    targetDelayTime = delayTimeParam->get();
-    if (delayTime == 0.0f)
-    {
-        delayTime = targetDelayTime;
-    }
+    delayTime = delayTimeParam->get();
+//    targetDelayTime = delayTimeParam->get();
+//    if (delayTime == 0.0f)
+//    {
+//        delayTime = targetDelayTime;
+//    }
 }
 
 void Parameters::prepareToPlay(double sampleRate) noexcept
@@ -90,7 +91,7 @@ void Parameters::prepareToPlay(double sampleRate) noexcept
     double duration = 0.02;
     gainSmoother.reset(sampleRate, duration);
     
-    coeff = 1.0f - std::exp(-1.0f / (0.2f * float(sampleRate)));
+//    coeff = 1.0f - std::exp(-1.0f / (0.2f * float(sampleRate)));
 }
 
 void Parameters::reset() noexcept
@@ -105,5 +106,5 @@ void Parameters::reset() noexcept
 void Parameters::smoothen() noexcept
 {
     gain = gainSmoother.getNextValue();
-    delayTime += (targetDelayTime - delayTime) * coeff;
+//    delayTime += (targetDelayTime - delayTime) * coeff;
 }

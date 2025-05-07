@@ -162,13 +162,15 @@ void DeeelayAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, [[ma
     
     float gain = params.gain;
     int totalNumSamples = buffer.getNumSamples();
+    
+    float delayInSamples = params.delayTime / 1000.0f * sampleRate;
+    delayLine.setDelay(delayInSamples);
 
     for (int sampleIndex = 0; sampleIndex < totalNumSamples; ++sampleIndex)
     {
         params.smoothen();
         
-        float delayInSamples = params.delayTime / 1000.0f * sampleRate;
-        delayLine.setDelay(delayInSamples);
+
         
         float dryL = channelDataL[sampleIndex];
         float dryR = channelDataR[sampleIndex];

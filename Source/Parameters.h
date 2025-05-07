@@ -40,6 +40,6 @@ class Parameters
     
     juce::AudioParameterFloat *delayTimeParam;
     
-    float targetDelayTime = 0.0f;
-    float coeff = 0.0f; // one-pole smoothing, determines how fast the smoothing happens
+//    float targetDelayTime = 0.0f;
+//    float coeff = 0.0f; // one-pole smoothing, determines how fast the smoothing happens
 };
